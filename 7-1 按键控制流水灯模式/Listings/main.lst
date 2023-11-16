@@ -1,0 +1,77 @@
+C51 COMPILER V9.54   MAIN                                                                  11/07/2023 22:16:54 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\programmertools\Keil_5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(
+                    -.\Listings\main.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          #include "Key.h"
+   4          #include <INTRINS.h>
+   5          
+   6          void Timer0_Init(void)          //1毫秒@12.000MHz
+   7          {
+   8   1              TMOD &= 0xF0;                   //设置定时器模式
+   9   1              TMOD |= 0x01;                   //设置定时器模式
+  10   1              TL0 = 0x18;                             //设置定时初始值
+  11   1              TH0 = 0xFC;                             //设置定时初始值
+  12   1              TF0 = 0;                                //清除TF0标志
+  13   1              TR0 = 1;                                //定时器0开始计时
+  14   1              ET0 = 1;
+  15   1              EA = 1;
+  16   1              PT0 = 1;
+  17   1      }
+  18          
+  19          //unsigned char (*func)(unsigned char, unsigned char);
+  20          unsigned char keyNum;
+  21          unsigned char LEDMode;
+  22          
+  23          void main(){
+  24   1              Timer0_Init();
+  25   1              P2 = 0xfe;
+  26   1          while(1){
+  27   2                      keyNum = Key();
+  28   2                      if(keyNum){
+  29   3                              if(keyNum==1){
+  30   4                                      LEDMode++;
+  31   4                                      if(LEDMode >= 2) LEDMode = 0;
+  32   4                              }
+  33   3                      }
+  34   2          }
+  35   1      }
+  36          
+  37          unsigned int cnt;
+  38          void Timer0_Runtine() interrupt 1{
+  39   1              TL0 = 0x18;                             //设置定时初始值
+  40   1              TH0 = 0xFC;                             //设置定时初始值
+  41   1              cnt++;
+  42   1              if(cnt >= 1000){
+  43   2                      cnt = 0;
+  44   2                      if(LEDMode){
+  45   3                              P2 = _crol_(P2, 1);
+  46   3                      }else{
+  47   3                              P2 = _cror_(P2, 1);
+  48   3                      }
+  49   2                      
+  50   2              }
+  51   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.54   MAIN                                                                  11/07/2023 22:16:54 PAGE 2   
+
+   CODE SIZE        =    136    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

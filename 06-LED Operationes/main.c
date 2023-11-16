@@ -16,7 +16,6 @@ unsigned char i = 0;
 unsigned int delay_time = 800;
 
 void display(){
-	P2 = 0xff;
 	for(i = 0; i < 8; i++){
 		_delay(delay_time-100);
 		P2 = light[i];
@@ -35,5 +34,6 @@ void display(){
 void main(){
 	while(1){
 		display();
+		P2 = 0xff;
 	}
 }

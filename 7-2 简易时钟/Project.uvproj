@@ -45,7 +45,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>project</OutputName>
+          <OutputName>Project</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -367,6 +367,26 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer0.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Timer0.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer0.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Timer0.h</FilePath>
+            </File>
+            <File>
+              <FileName>LCD1602.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\LCD1602.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCD1602.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\LCD1602.h</FilePath>
             </File>
           </Files>
         </Group>

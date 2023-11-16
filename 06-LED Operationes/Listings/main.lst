@@ -1,4 +1,4 @@
-C51 COMPILER V9.54   MAIN                                                                  04/12/2023 23:23:30 PAGE 1   
+C51 COMPILER V9.54   MAIN                                                                  04/12/2023 23:26:08 PAGE 1   
 
 
 C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
@@ -26,25 +26,25 @@ line level    source
   16          unsigned int delay_time = 800;
   17          
   18          void display(){
-  19   1              P2 = 0xff;
-  20   1              for(i = 0; i < 8; i++){
-  21   2                      _delay(delay_time-100);
-  22   2                      P2 = light[i];
-  23   2                      _delay(delay_time-100);
-  24   2                      delay_time -= 100;
-  25   2                      
-  26   2              }
-  27   1              for(i = 7; i >= 0; i--, delay_time--){
-  28   2                      _delay(delay_time+100);
-  29   2                      P2 = light[i];
-  30   2                      _delay(delay_time+100);
-  31   2                      delay_time += 100;
-  32   2              }
-  33   1      }
-  34          
-  35          void main(){
-  36   1              while(1){
-  37   2                      display();
+  19   1              for(i = 0; i < 8; i++){
+  20   2                      _delay(delay_time-100);
+  21   2                      P2 = light[i];
+  22   2                      _delay(delay_time-100);
+  23   2                      delay_time -= 100;
+  24   2                      
+  25   2              }
+  26   1              for(i = 7; i >= 0; i--, delay_time--){
+  27   2                      _delay(delay_time+100);
+  28   2                      P2 = light[i];
+  29   2                      _delay(delay_time+100);
+  30   2                      delay_time += 100;
+  31   2              }
+  32   1      }
+  33          
+  34          void main(){
+  35   1              while(1){
+  36   2                      display();
+  37   2                      P2 = 0xff;
   38   2              }
   39   1      }
 
